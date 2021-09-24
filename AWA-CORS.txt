@@ -1,0 +1,30 @@
+Azure Web App -CORS
+--------------------------------------
+
++CORS --> Cross Origin Resource Sharing
+	This is a method of restricting access to resources on a web page
+	when it is requested from another domain.... outside the domain
+	from which the intial resource is being served.
+
++if A is calling B than
+	in b web app service 
+	1) Go to Cors in settings
+	2) Enable Access-Control Allow Credentials
+	3) Enter A address in Allowed Origins
+
++ in Azure CLI
+	az webapp cors add -g new-grp -n enterappname --allowed-origins
+	url
+  eg.,
+	az webapp cors add -g new-grp -n sourceapi1000 --allowed-origins
+	https://consumewebapp1000.azurewebsites.net
+
+
+
+
+
+
+
+
+
+

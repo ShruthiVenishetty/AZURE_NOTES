@@ -1,0 +1,12 @@
+Azure SQL Database - Creating
+-----------------------------
+
+1) Create a SQL Database in Azure by creating a new server.
+2) Goto Next page Networking
+	Select Public Endpoint
+	For Add Current Client IP addres Click YES
+	Allow services and resources----YES
+3) Review and Create
+
+Now we can access it in SSMS or VS by logging in
+

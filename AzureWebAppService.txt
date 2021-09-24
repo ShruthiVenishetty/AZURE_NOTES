@@ -1,0 +1,36 @@
+Azure Web App Service
+------------------------------
++ It is a platform as a service.
++ In this platform as a service our application gets deployed in a Virtual machine
+or a compute Infrastructure.
++ This VM or Compute Infrastructure is maganed 
+   by the azure themselves(azure web app service)
+ 
+	Benifits
+	---------
++ We dont have to manage VM or Compute Infrastructure.
++ We dont have to manage Web Server.
++ We dont have to manage configuration of web server.
++ It has features like autoscaling and security.
++ It has DevOps capabilities which includes Continuous deployment.
+
+	Links && Definations
+	---------------------
+
+autoscaling in azure --> https://www.red-gate.com/simple-talk/cloud/azure/autoscaling-in-microsoft-azure/
+	
+	Autoscaling provides the capability to run your application or workload 
+with the required resources (resources, in this case, are virtual machines) 
+without interruption. It assures you that the virtual machines you requested
+for your application are always available and up. If the virtual machines 
+are interrupted, autoscaling replaces those faulty virtual machines with
+new ones.
+
+Continuous deployment in devops
+
+	Continuous deployment is a software development method that releases 
+or deploys software automatically into the production environment. In this 
+model, no one manually checks the code and pushes into your app.
+	It uses automated testing to validate if changes to a codebase are 
+correct and stable for immediate autonomous deployment to a production 
+environment.

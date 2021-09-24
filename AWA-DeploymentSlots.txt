@@ -1,0 +1,105 @@
+Azure Web App - Deployment Slots (Available in standard or premium Plans)
+-------------------------------------------------------------------------
+
+	so first we have developed a app and deployed it lets say 
+        Version 1.
+	When we updated some features in it we call it version 2.
+
+So inorder to deploy the version 2 we have two options
+
+	Option-1
+	--------
+ + Create another azure web app service.
+ + deploy version 2 in it.
+
+	Option-2
+	--------
+ So instead of creating another Azure web app service
+ we have a option in Azure web app called deployment slots
+ Here in deployment slots we have
+	+ Production slot
+	+ Staging slot
+ By default when we deploy the version 1 it goes into the production slot
+ 
+ So when ever we have a update like version 2 we can deploy it into Staging slots
+
+ Staging Slots
+ -------------
+ + We have sepearte domain names for Staging and production slots
+ + So the users can use the production slot with its domain name url and
+   we can test our version 2 with its domain name url
+ + So when our version 2 is tested and ready to deploy we can just swap
+   the both slots
+		So that production slot now has version 2 and will be used
+		by the user and staging will have version 1
+ + if we have bugs in version 2 after deployment we can just swap it with version 1
+
+ Advantages
+ ----------
+ + It helps to eliminate the downtime of our applications for 
+   version updates
+ + We can easily roll back changes.
+
+
+ Steps
+ -----
+1) Go to Deployment Slots in Deployment
+2) If plan is not standard or premium Plan than 
+   update it( in scale up in settings)
+3) Click on Add Slot
+4) Give the name and press on add
+5) Click on the newly added slot we will have everything 
+   like a new Azure web app
+6) Now publishing version 2 from vs select this staging slot and publish it.
+   
+	So now production slot has version 1
+	And staging slot has version 2
+
+ Swapping of Production and staging Slots
+ -------------------------------------------
+1) Go to any one slot either production or staging 
+2) Click on Swap
+3) Select source url and target url
+4) Click swap
+	
+	So now production slot has version 2
+	And deployment slot has version 1
+
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+PowerShell commands for Azure Web Apps
+---------------------------------------
+
+1)// First you can go ahead and create variables that can be used 
+  in the PowerShell script. Here we are setting the location for 
+  the web application, the name of a new resource group and the name 
+  of the new Azure Web App
+
+	$location="Central US"
+
+	$resourcegrp="newgrp"
+
+	$webappname="demoapp4040"
+
+
+2)// Next we issue the command to create a new resource group
+
+	New-AzResourceGroup -Name $resourcegrp -Location $location
+
+3)// Next we issue the command to create a new App Service Plan
+
+	New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName $resourcegrp -Tier Standard
+
+4)// Next we issue the command to create a new Web App
+
+	New-AzWebApp -Name $webappname -Location $location -ResourceGroupName $resourcegrp -AppServicePlan $webappname
+
+5)// Next we issue the command to create a new Web App deployment slot
+
+	New-AzWebAppSlot -Name $webappname -ResourceGroupName $resourcegrp -Slot "staging"
+
+

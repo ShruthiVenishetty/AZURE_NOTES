@@ -1,0 +1,7 @@
+Azure Web App - Custom domains
+
+1.Go to Custom Domains in Azure web app
+2.Add Custom domain
+3.Write your domain name and click on validate
+4.Before clicking validate create a CNAME in domain name buying website.
+5.Now after it is verified click on Add custom domain.

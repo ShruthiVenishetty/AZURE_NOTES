@@ -1,0 +1,17 @@
+Azure Web App - Custom domains
+
+1.Go to Custom Domains in Azure web app
+2.Add Custom domain
+3.Write your domain name and click on validate
+4.Before clicking validate create a CNAME in domain name buying website.
+5.Now after it is verified click on Add custom domain.
+
+
+How to make it SSL that is secured(HTTPS)
+
+1. Go to TLS/SSL settings.
+2. GO to private Key Certificates
+3. If we already have certificate for website upload it.
+4. If not click on Create App Service Managed Certificate-> it is free.
+5. After uploading/creating a certificate Go to Bindings 
+6. Go to Add TLS/SSL Binding

@@ -1,0 +1,52 @@
+Azure Web App - AutoScaling ( available for standard plan and higher)
+---------------------------------------------------------------------
+
+- Autoscaling is not available in Basic Plan
+- In Basic plan we have to do Manual scaling(upto 3 VM's)
+
+In standard and above plans we have Autoscaling
++ Here we need to write rules and conditions to trigger the scaling
++ we can do scale out and scale in
+
+ eg., like if the cpu goes beyond certain limit it can scale out(add VM's)
+      if load decreases it can scale in(remove VM's) thus reducing cost
+
+
+  Steps
+  -----
+ 1) Go to scale out
+ 2) we have two options 
+	a) Manual Scaling
+	b) Custom AutoScale
+ 3) Select Custom Autoscale
+ 4) In default section 
+	We can scale based on metric or based on instance count
+	We can add a rule
+		We can select any metric source
+		Based on Metric source we can add a rule
+		If the metric source is our Service PLAN
+			we have operator section where we ,can specify
+			Greater than or less than values of threshold
+		We can increase the count by 1 or our own 
+	We have Cool down period which means time taken to distribute the 
+	load amoung the VM's.
+ 5) We have minimum and maximum instances in default section.
+ 6) Click Save
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+Azure web App - Logging
+-----------------------
++ We have a set of logging features that are available for the Azure web App.
++ Types of Logging
+	a) Appilication Logging
+		caputres log messages that are geneated by our appilication code.
+	b) Web Server Logging
+		records raw HTTP request data.
+	c) Detailed Error Messages
+		stores copies of the .htm error pages that would have been
+		sent to the client browser.
+	d) Deployment Logging
+		logs when we publish content to an appilication
+	e) We can also stream logs in real time
+
+
+
+

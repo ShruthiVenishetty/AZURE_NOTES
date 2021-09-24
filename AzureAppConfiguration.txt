@@ -1,0 +1,124 @@
+Azure App Configuration
+-----------------------
+
+Provides a central place to manage app settings and 
+feature flags for our web applications.
+
+
+working
+---------
+If we have a set of azure web apps. We know that for 
+each web app we will have appsettings file.
+
+So now if we want to have a central place for all the web apps
+then we can create a Azure App Configuration and use it.
+
+Mostly we use it for writting the common settings in a set of web apps
+
+----------------------------------------------------------------------
+
+Feature Flags
+-------------
+ 
+we also have a concept of Feature Flags in Azure App Configuration
+
+Using this we can enable or disable a feature without removing the code from the app
+
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+
+Steps for creating App Configuration
+------------------------------------
+
+1) Go to all resources
+2) Click on add
+3) In search ,, search for app configuration
+4) Click on create
+5) Select a pricing tier(plan--> we have two plans
+6) Click on Review and create
+
+Steps for working with App Configuration for setting AppSettings
+----------------------------------------------------------------
+
+1) In App configuration go to operations section
+2) Select Cogiguration explorer
+3) Click on create we have options of key-value (or) key vault reference
+4) Choose Key-value
+	1) give key name and a value  
+	2) Click apply
+
+5) now in Vs add a nuguet package-  Microsoft.Azure.AppConfiguration.AspNetCore
+6) Go to Program.cs
+		
+		public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>                
+                    webBuilder.ConfigureAppConfiguration(config =>
+                    {
+                        var settings = config.Build();
+                        config.AddAzureAppConfiguration(Here write connection string of app configuration);
+                    })                 
+                   .UseStartup<Startup>());  
+
+7) we can get connection string in app configuration-->settings-->Access Keys-->show values-->connection string of primary key
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Feature Flags
+
+Steps for working with App Configuration for setting Feature Flags
+------------------------------------------------------------------
+
+1) Goto AppConfiguration--> Operations-->Feature Manager
+2) click on add--> fill details and add
+3) In Vs add a nuguet package-  Microsoft.Azure.AppConfiguration.AspNetCore
+4) In Vs add a nuguet package-  Microsoft.FeatureManagement.AspNetCore
+5) In Program.cs
+
+		public static IHostBuilder CreateHostBuilder(string[] args) =>
+     Host.CreateDefaultBuilder(args)
+         .ConfigureWebHostDefaults(webBuilder =>
+             webBuilder.ConfigureAppConfiguration(config =>
+             {
+                 var settings = config.Build();
+                 config.AddAzureAppConfiguration(options =>
+                     options.Connect(Here write connection string of app configuration).UseFeatureFlags());
+             }).UseStartup<Startup>());
+
+6) In Startup.cs
+	 services.AddFeatureManagement();
+
+7) Add a Class with enum in it -FeatureFlag.cs
+
+	public enum FeatureFlag
+   	{
+        	staging
+   	}
+
+8) Do Dependency Injection in what ever controller we are using it
+
+
+9) For method in which we want to use it 
+   above it add a attribute
+  	  [FeatureGate(FeatureFlag.staging)]
+
+10)Now for the link/button from which we are calling this action method in cshtml
+   Give it feature tag
+   Like
+ 			<feature name="staging">
+                            <a></a>
+                        </feature>    
+
+
+11) Now if we enable feature flag it displays the button/link 
+    if not it does not display
+
+
+
+
+
+
+ 

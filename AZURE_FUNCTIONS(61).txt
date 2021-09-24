@@ -1,0 +1,33 @@
+AZURE FUNCTIONS
+---------------
+
++ This service allows us to run small pieces of code as functions
++ We get billed for amount of time code is running
++ We can use various programming languages (C#,java,Javascript,powershell,python)
++ we can use libraries by using nuget,npm packages
+
+
+Ways of Invoking Azure Functions
+--------------------------------
+1) using a HTTP Trigger
+2) using Timer Trigger--> If we want function to run in certain time intervals
+3) Triggers for other Azure Services
+	a.  Trigger from blob Storage
+	b.  Trigger from queue Storage 
+	c.  Trigger from event hubs
+
+
+Plans Availabe
+--------------
+1) Consumption plan - Pay for the time code runs
+2) Azure web App service plan - we can also use the plan of Azure web App
+3) Premium Plan
+
+
+
+
+
+
+
+
+
